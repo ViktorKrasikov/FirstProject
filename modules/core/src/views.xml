@@ -1,0 +1,7 @@
+<views xmlns="http://schemas.haulmont.com/cuba/5.1/view.xsd">
+    <view class="com.sample.sales.entity.Order"
+          name="orderWithCustomer"
+          extends="_local">
+        <property name="customer" view="_minimal"/>
+    </view>
+</views>

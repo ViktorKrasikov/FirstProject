@@ -1,0 +1,7 @@
+<menu-config xmlns="http://schemas.haulmont.com/cuba/5.1/menu.xsd">
+    <menu id="sales" insertBefore="administration">
+        <item id="sales$Customer.lookup"/>
+        <item id="sales$Order.lookup"/>
+    </menu>
+
+</menu-config>

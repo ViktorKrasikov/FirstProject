@@ -1,0 +1,46 @@
+<!--
+  ~ Copyright (c) 2014 company
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.1/window.xsd"
+        class="com.haulmont.cuba.gui.components.AbstractEditor"
+        caption="msg://editorCaption"
+        datasource="customerDs"
+        messagesPack="com.sample.sales.gui.customer"
+        focusComponent="customerFieldGroup">
+
+    <dsContext>
+        <datasource id="customerDs"
+                    class="com.sample.sales.entity.Customer"
+                    view="_local">
+        </datasource>
+        <collectionDatasource id="ordersDs"
+                              class="com.sample.sales.entity.Order"
+                              view="_local">
+            <query>
+                select o from sales$Order o
+                where o.customer.id = :ds$customerDs
+                order by o.date
+            </query>
+        </collectionDatasource>
+    </dsContext>
+
+    <layout spacing="true" expand="windowActions">
+        <fieldGroup id="customerFieldGroup"
+                    datasource="customerDs">
+            <column width="250px">
+                <field id="name"/>
+                <field id="email"/>
+            </column>
+        </fieldGroup>
+        <label value="msg://orders"/>
+        <table id="ordersTable" width="100%">
+            <columns>
+                <column id="date"/>
+                <column id="amount"/>
+            </columns>
+            <rows datasource="ordersDs"/>
+        </table>
+        <iframe id="windowActions" screen="editWindowActions"/>
+    </layout>
+</window>
